@@ -155,3 +155,10 @@ indexexchange.com, 214183, RESELLER, 50b1c356f2c5c8fc
 unity.com, 126965181, DIRECT, 96cabb5fbdde37a7
 start.io, 197760873, RESELLER
 start.io, 168507669, RESELLER
+bluexad.ai, 1996418805747683328, RESELLER
+pubnative.net, 1017792, RESELLER, d641df8625486a7b
+rubiconproject.com, 27538, RESELLER, 0bfd66d529a55807
+video.unrulymedia.com, 290726769, RESELLER
+video.unrulymedia.com, 905340553, RESELLER
+pubmatic.com, 165329, RESELLER, 5d62403b186f2ace
+pubmatic.com, 166335, RESELLER, 5d62403b186f2ace
