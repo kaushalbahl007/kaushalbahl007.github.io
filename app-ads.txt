@@ -167,3 +167,5 @@ openx.com, 563905670, RESELLER, 6a698e2ec38604c6
 pubmatic.com, 165854, RESELLER, 5d62403b186f2ace
 
 triplelift.com, 14798, RESELLER, 6c33edb13117fd86
+
+facebook.com, 2470810313357705, DIRECT, c3e20eee3f780d68
