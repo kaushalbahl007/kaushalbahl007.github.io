@@ -198,6 +198,23 @@ nav a.active::after{
 
 .menu{display:none}
 
+/* ---------- Scroll progress ---------- */
+.scroll-progress{
+  position:fixed;top:52px;left:0;right:0;height:2px;z-index:99;
+  transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,#0a84ff,#5e5ce6 50%,#bf5af2);
+  pointer-events:none;
+}
+/* Native scroll-driven animation where supported — no JS on the main thread. */
+@supports (animation-timeline: scroll()){
+  .scroll-progress{
+    animation:progress-grow linear both;
+    animation-timeline:scroll(root block);
+  }
+  @keyframes progress-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+}
+@media(max-width:760px){ .scroll-progress{top:52px} }
+
 /* ---------- Buttons ---------- */
 .button{
   display:inline-flex;align-items:center;gap:8px;
@@ -224,17 +241,62 @@ nav a.active::after{
 .text-link:hover{gap:11px;opacity:.75}
 .text-link b{font-weight:400}
 
+/* Premium Google Play badge */
 .store-button{
-  display:inline-flex;flex-direction:column;justify-content:center;
-  min-width:150px;padding:9px 18px;
-  background:var(--text);color:var(--bg);
-  border-radius:12px;line-height:1.2;
-  transition:transform .3s var(--spring),box-shadow .3s var(--ease),opacity .25s var(--ease);
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:12px;
+  padding:11px 22px 11px 18px;
+  border-radius:14px;line-height:1.15;
+  color:#fff;
+  background:linear-gradient(160deg,#3a3a3c 0%,#1c1c1e 46%,#000 100%);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.3),
+    0 8px 20px -6px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.14);
+  transition:transform .35s var(--spring),box-shadow .35s var(--ease);
+  will-change:transform;
 }
-.store-button:hover{transform:translateY(-2px) scale(1.02);box-shadow:var(--shadow-md);opacity:.92}
-.store-button:active{transform:scale(.97)}
-.store-button small{font-size:9px;letter-spacing:.06em;opacity:.7;text-transform:uppercase}
-.store-button strong{font-size:15px;font-weight:600;letter-spacing:-.02em}
+/* Gloss sweep across the top edge */
+.store-button::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.16),transparent 42%);
+}
+/* Light sheen that travels on hover */
+.store-button::after{
+  content:'';position:absolute;top:0;bottom:0;left:-70%;width:45%;
+  pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:skewX(-18deg);
+  transition:left .65s var(--ease-out);
+}
+.store-button:hover{
+  transform:translateY(-3px) scale(1.02);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,.3),
+    0 16px 34px -8px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.2);
+}
+.store-button:hover::after{left:125%}
+.store-button:active{transform:translateY(-1px) scale(.985)}
+.store-button .play-glyph{
+  width:24px;height:24px;flex:none;position:relative;
+  filter:drop-shadow(0 1px 3px rgba(0,0,0,.4));
+}
+.store-button span{position:relative;display:flex;flex-direction:column}
+.store-button small{
+  font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;
+  opacity:.78;font-weight:500;
+}
+.store-button strong{font-size:16px;font-weight:600;letter-spacing:-.02em;margin-top:1px}
+
+/* On a near-black page the badge needs a hairline to separate from the bg. */
+:root[data-theme="dark"] .store-button{
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.5),
+    0 8px 20px -6px rgba(0,0,0,.7),
+    inset 0 0 0 1px rgba(255,255,255,.12),
+    inset 0 1px 0 rgba(255,255,255,.16);
+}
 
 .mini-link{
   font-size:14px;color:var(--accent);
@@ -280,7 +342,7 @@ nav a.active::after{
   padding:130px var(--gutter) 96px;
   text-align:center;
 }
-.hero > *:not(.glow){
+.hero > *:not(.glow):not(.hero-copy){
   max-width:var(--max);
   margin-left:auto;margin-right:auto;
 }
@@ -405,6 +467,81 @@ nav a.active::after{
 .card-type{
   font:500 11px var(--sans);letter-spacing:.06em;
   text-transform:uppercase;color:var(--muted);
+}
+
+/* Light sweep across an app icon when its card is hovered. */
+.app-icon::before{
+  content:'';position:absolute;top:0;bottom:0;left:-80%;width:55%;z-index:3;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-18deg);opacity:0;
+  transition:left .7s var(--ease-out),opacity .3s var(--ease);
+  pointer-events:none;
+}
+.app-card:hover .app-icon::before,
+.mini-card:hover .app-icon::before,
+.featured-card:hover .app-icon::before,
+.choice-grid a:hover .app-icon::before{left:130%;opacity:1}
+
+/* Featured cards tilt very slightly toward the cursor side on hover. */
+.featured-card{transform-origin:center bottom}
+
+/* ---------- Full catalog (home page) ---------- */
+/* Offset for the 52px sticky header when jumping to #all-apps. */
+.catalog{padding-top:0;scroll-margin-top:72px}
+.catalog-group{margin-top:44px}
+.catalog-label{
+  display:flex;align-items:center;gap:10px;
+  padding-bottom:14px;margin-bottom:20px;
+  border-bottom:1px solid var(--hairline);
+}
+.catalog-label h3{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.catalog-label span{
+  font:600 11px var(--sans);
+  min-width:20px;height:20px;padding:0 6px;
+  display:grid;place-items:center;border-radius:980px;
+  background:var(--accent-soft);color:var(--accent);
+}
+
+.mini-grid{
+  display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(268px,1fr));
+}
+.mini-card{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 12px 12px 14px;
+  background:var(--surface-solid);
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  box-shadow:var(--shadow-sm);
+  transition:transform .35s var(--ease-out),box-shadow .35s var(--ease),border-color .3s var(--ease);
+}
+.mini-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--line-strong)}
+.mini-card:hover .app-icon{transform:scale(1.06) rotate(-3deg)}
+/* Main link fills the card so the whole surface is clickable. */
+.mini-card-main{
+  display:flex;align-items:center;gap:13px;
+  flex:1;min-width:0;
+}
+.mini-card .app-icon{width:46px;height:46px;border-radius:12px;font-size:20px}
+.mini-card-text{display:flex;flex-direction:column;min-width:0}
+.mini-card-text strong{
+  font-size:14.5px;font-weight:600;letter-spacing:-.015em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.mini-card-text span{font-size:12.5px;color:var(--muted);margin-top:2px}
+/* Compact Play badge — same identity as the full button, icon only. */
+.mini-get{
+  flex:none;width:36px;height:36px;
+  display:grid;place-items:center;border-radius:11px;
+  background:linear-gradient(160deg,#3a3a3c,#1c1c1e 60%,#000);
+  box-shadow:0 1px 2px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.14);
+  transition:transform .3s var(--spring),box-shadow .3s var(--ease);
+}
+.mini-get:hover{transform:scale(1.1);box-shadow:0 6px 16px -4px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.2)}
+.mini-get:active{transform:scale(.94)}
+.mini-get .play-glyph{width:17px;height:17px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+@media(max-width:520px){
+  .mini-grid{grid-template-columns:1fr}
 }
 
 /* ---------- Statement ---------- */
@@ -612,7 +749,8 @@ nav a.active::after{
 .legal h2,.simple-content h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.03em;margin-bottom:20px}
 .legal h3,.simple-content h3{font-size:23px;margin-top:44px;margin-bottom:10px}
 .legal p,.simple-content p{color:var(--text-secondary);line-height:1.7;font-size:17px}
-.legal a,.simple-content a{color:var(--accent);transition:opacity .25s var(--ease)}
+/* Inline prose links only — must not repaint .button text (blue on blue). */
+.legal a:not(.button),.simple-content a:not(.button){color:var(--accent);transition:opacity .25s var(--ease)}
 .legal a:hover,.simple-content a:hover{opacity:.7}
 
 /* ---------- Privacy policy page ---------- */
@@ -639,6 +777,22 @@ nav a.active::after{
   color:var(--text)!important;
   padding-left:20px;border-left:3px solid var(--accent);
   margin-bottom:8px;
+}
+/* Sub-headings inside a policy section (e.g. "Rewarded Video Ads") */
+.policy-sub{
+  font-size:15px;font-weight:600;letter-spacing:-.01em;
+  margin:26px 0 -6px;color:var(--text);
+}
+.policy-list{
+  margin:14px 0 18px;padding:0;list-style:none;
+}
+.policy-list li{
+  position:relative;padding-left:22px;margin:9px 0;
+  color:var(--text-secondary);line-height:1.65;font-size:16px;
+}
+.policy-list li::before{
+  content:'';position:absolute;left:4px;top:.62em;
+  width:5px;height:5px;border-radius:50%;background:var(--accent);
 }
 .policy-source{margin-top:40px;padding-top:24px;border-top:1px solid var(--hairline)}
 @media(max-width:700px){

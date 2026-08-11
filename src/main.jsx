@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { createRoot } from 'react-dom/client'
 import { AnimatePresence, motion } from 'framer-motion'
 import { BrowserRouter, Link, NavLink, Route, Routes, useParams, useLocation } from 'react-router-dom'
+import { policies } from './policies'
 import './styles.css'
 
 const PLAY = 'https://play.google.com/store/apps/details?id='
@@ -15,17 +16,6 @@ const apps = [
     description:'Fifty hand-crafted levels built around a single mechanic: clear directional arrows in exactly the right order to find your way out.',
     features:['50 handcrafted levels','Pure logic, no timers','Plays fully offline'],
     policyUrl:'https://kaushalbahl007.github.io/Privacy-policy-arrow-puzzle/',
-    policy:{
-      updated:'July 12, 2026',
-      summary:'Arrow Puzzle Escape does not collect personal information. Your progress stays on your device.',
-      sections:[
-        ['Information we collect','We do not collect personal information such as your name, email address or phone number. Your game progress — completed levels, stars, points and coins — is stored only on your device and is never sent to us.'],
-        ['Advertising','Google AdMob handles advertising in this app and may collect device identifiers, approximate location derived from your IP address, and app interaction data. All transmissions are encrypted.'],
-        ['Notifications','Local reminder notifications are generated on your device. No data collection is involved, and they can be disabled at any time from your device settings.'],
-        ['Your choices','You can reset your Advertising ID or opt out of personalised ads from your device settings under Privacy → Ads. Uninstalling the app removes all locally stored data.'],
-        ['Children','The app is not directed at children under 13. We do not knowingly collect personal information from children.'],
-      ],
-    },
   },
   {
     id:'flowpath', name:'Flow Path: Pipe Puzzle Game', type:'Game', tag:'Pipe puzzle',
@@ -35,16 +25,6 @@ const apps = [
     description:'Connect matching colour dots with flowing pipes until every cell on the board fills — a calmer, more meditative take on the classic pipe genre.',
     features:['Relaxed, meditative pacing','Progress stored locally','Plays fully offline'],
     policyUrl:'https://kaushalbahl007.github.io/PATHFLOW-privacy-policy/',
-    policy:{
-      updated:'April 18, 2026',
-      summary:'Flow Path collects no personally identifiable information. Game progress is stored locally on your device only.',
-      sections:[
-        ['Information we collect','The app itself collects no personally identifiable information. Third-party SDKs gather device identifiers (advertising ID, device model, OS version) and ad interaction metrics. Game progress is stored locally on your device only.'],
-        ['Advertising','Google AdMob displays advertisements within Flow Path and may use the identifiers described above to serve them.'],
-        ['Your choices','You can opt out of personalised ads in your device settings or reset your advertising identifier at any time. Uninstalling the app deletes all locally stored data.'],
-        ['Children','The app is not directed to children under 13.'],
-      ],
-    },
   },
   {
     id:'ludo', name:'Ludo Indian Adition', type:'Game', tag:'Board game',
@@ -54,17 +34,6 @@ const apps = [
     description:'A modern, vibrant take on the beloved Indian classic, built for smooth local multiplayer between two and four players on one device.',
     features:['Local multiplayer for 2–4 players','Classic rules, modern feel','Quick rounds'],
     policyUrl:'https://kaushalbahl007.github.io/privacy-policy/',
-    policy:{
-      updated:'April 2026',
-      summary:'Ludo Indian Adition collects limited device and usage data to run and improve the game.',
-      sections:[
-        ['Information we collect','We collect device information (device model, operating system version) and usage data (game activity, session duration), along with IP addresses used for performance optimisation.'],
-        ['Third-party services','Google AdMob manages advertisements and Google Firebase provides analytics and crash reporting. Each service handles data under its own privacy policy.'],
-        ['Data security','No method of internet transmission or electronic storage is completely secure. We work to protect your information but cannot guarantee absolute security.'],
-        ['Children','We do not knowingly collect personal information from children under the age of 13. If such data is discovered, it is removed immediately.'],
-        ['Changes','We may update this policy from time to time and will provide notice of material changes.'],
-      ],
-    },
   },
   {
     id:'block-burst', name:'Block Burst: Wood Puzzle', type:'Game', tag:'Block puzzle',
@@ -74,17 +43,6 @@ const apps = [
     description:'Place wooden blocks on an 8×8 grid and clear full rows and columns before the board fills up — calm on the surface, sharper the longer you play.',
     features:['Endless 8×8 gameplay','Optional one-time ad removal','Progress stored on device'],
     policyUrl:'https://kaushalbahl007.github.io/block_burst_privacy_policy/',
-    policy:{
-      updated:'May 15, 2026',
-      summary:'Block Burst stores game progress on your device only. No personal identifiers, location data or cross-app tracking.',
-      sections:[
-        ['Information we collect','Only local device storage is used: game progress (scores, levels completed, achievements) and app settings. We collect no personal identifiers, no location data, and perform no cross-app tracking.'],
-        ['Third-party services','Google AdMob serves advertisements, Google Play Billing processes purchases, and Android push notifications are generated locally. Benzene Studio does not use Firebase, analytics SDKs, crash reporting tools, or any other third-party data collection services beyond those listed here.'],
-        ['In-app purchases','Google Play Billing handles all transactions securely. The developer receives only purchase confirmations and never has access to your payment card information. A one-time purchase removes ads permanently.'],
-        ['Children','We do not knowingly collect personal information from children under 13, or the applicable age in your jurisdiction. Because no personal data is collected from any user, privacy risk to children is limited to standard ad content.'],
-        ['Contact','Email us and we aim to respond within 48 hours.'],
-      ],
-    },
   },
   {
     id:'marble-ball-sort', name:'Marble Ball Sort: Tube Puzzle', type:'Game', tag:'Colour sorting',
@@ -94,16 +52,6 @@ const apps = [
     description:'Sort coloured marbles into matching tubes, one careful move at a time — 500 handcrafted levels across eight difficulty tiers.',
     features:['500 handcrafted levels','Eight difficulty tiers','Progress stored on device'],
     policyUrl:'https://kaushalbahl007.github.io/tube_sort_privacy_policy/',
-    policy:{
-      updated:'May 16, 2026',
-      summary:'Marble Ball Sort does not directly collect personal information. All game progress stays on your device.',
-      sections:[
-        ['Information we collect','We do not directly collect personal information such as your name or email address. Third-party services automatically gather device model, OS version, unique device identifiers, gameplay metrics and advertising identifiers.'],
-        ['Third-party services','Google AdMob provides advertising and Google Play Services supports app delivery and analytics. Each maintains its own privacy policy, which we encourage you to review.'],
-        ['Data storage','All game progress remains stored locally on your device. No data is uploaded to external servers.'],
-        ['Children','We do not knowingly collect personal information from children under the age of 13. Parents with concerns should contact us directly.'],
-      ],
-    },
   },
   {
     id:'snake-tangle', name:'Snake Tangle: Snake Game', type:'Game', tag:'Arcade',
@@ -113,17 +61,6 @@ const apps = [
     description:'The classic reflex game, rebuilt with endless mode, challenge levels, time attack and daily challenges — fully offline, no wifi required.',
     features:['Endless, challenge and time attack','Daily challenges','Plays fully offline'],
     policyUrl:'https://kaushalbahl007.github.io/snakeTanglePolicy/',
-    policy:{
-      updated:'May 2026',
-      summary:'Snake Tangle stores progress locally and integrates no analytics SDKs. Rated for ages 3+ with non-personalised ads for under-13s.',
-      sections:[
-        ['Information we collect','Game progress is stored locally using SharedPreferences. We do not collect personal identifiers such as names, email addresses or location data.'],
-        ['Advertising','Google AdMob may gather device identifiers, IP address and usage data to serve personalised or contextual advertisements.'],
-        ['Third-party services','Google AdMob is the only external SDK integrated. There are no analytics SDKs (such as Firebase Analytics or Crashlytics), no social media integrations, no marketing platforms and no data brokers.'],
-        ['Children','The app is rated for ages 3+ and complies with COPPA by serving non-personalised ads to users under 13. There are no chat features, social networking, user-generated content, or any feature that would allow a child to share personal information.'],
-        ['Contact','We aim to respond to support enquiries within 48 hours on business days.'],
-      ],
-    },
   },
   {
     id:'docsnap', name:'DocSnap: PDF Scanner & Editor', type:'Utility', tag:'Documents',
@@ -133,18 +70,6 @@ const apps = [
     description:'Scan, sign, merge and edit PDFs entirely on-device — no watermark, no sign-up and no ads.',
     features:['Scan, sign, merge and edit PDFs','On-device OCR with ML Kit','No watermark, no sign-up'],
     policyUrl:'https://kaushalbahl007.github.io/docflow-privacy/',
-    policy:{
-      updated:'July 17, 2026',
-      summary:'DocSnap does not collect, transmit or store your documents. Everything is processed on your device.',
-      sections:[
-        ['Information we collect','DocSnap does not collect, transmit or store your document contents, OCR text, signatures, personal identifiers or location data. All processing happens locally on your device.'],
-        ['On-device processing','Scanning, image imports, biometric vault access, reminders and OCR all run on your device using Google ML Kit’s on-device models. Document text is not sent to Google.'],
-        ['Permissions','The app requests camera, photos and storage, biometric authentication, notifications, internet access and advertising ID — each limited strictly to the purpose stated in the app.'],
-        ['Third-party services','ML Kit, AdMob and Google Play Services are used. AdMob collects device identifiers and general device information for advertising, but never your document contents.'],
-        ['Your rights','You can delete documents, revoke permissions, clear the cache or uninstall the app at any time to remove all local data.'],
-        ['Children','The app is not directed at children under 13.'],
-      ],
-    },
   },
   {
     id:'jyotish', name:'Jyotish: Janam Kundli & Dasha', type:'Utility', tag:'Astrology',
@@ -154,17 +79,6 @@ const apps = [
     description:'Birth charts, Vimshottari dashas, Panchang and kundli matching calculated fully offline — no birth details are uploaded to any server.',
     features:['Janam kundli and Vimshottari dasha','Panchang and kundli matching','Calculated fully on-device'],
     policyUrl:'https://kaushalbahl007.github.io/jyotish-privacy/',
-    policy:{
-      updated:'July 2026',
-      summary:'Your birth data belongs to you, not us. Birth details never leave your device.',
-      sections:[
-        ['Information we collect','To generate astrological charts the app asks for your name, date of birth, time of birth and place of birth (city or coordinates). This information stays exclusively on your device.'],
-        ['How birth details are handled','Birth data is stored only on your device using local SQLite storage and is never transmitted to any server, cloud or third party. All calculations run locally, and core features work without an internet connection.'],
-        ['Third-party services','Google AdMob serves advertisements and may collect your advertising ID, device identifiers, IP address, ad interactions and app activity. Google Fonts may receive your IP address when fonts are downloaded.'],
-        ['Your choices','You can opt out of personalised ads through your device settings. Deleting a profile or uninstalling the app removes the stored birth data from your device.'],
-        ['Children','Jyotish is not directed at children under the age of 13. We do not knowingly collect personal information from children.'],
-      ],
-    },
   },
 ]
 
@@ -234,9 +148,21 @@ function AppIcon({app, large=false}){
   )
 }
 
+/* Official Play triangle, drawn inline so it stays crisp and needs no request. */
+const PlayGlyph = () => (
+  <svg className="play-glyph" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+    <path fill="#00D3FF" d="M47 18 322 293l-77 77L47 172a35 35 0 0 1-10-25V43c0-10 4-19 10-25z"/>
+    <path fill="#00F076" d="M47 18a35 35 0 0 1 36-3l312 172-73 73L47 18z"/>
+    <path fill="#FFCE00" d="M395 187c24 13 24 47 0 60l-73 40-73-73 73-73 73 46z"/>
+    <path fill="#FF3A44" d="M83 497a35 35 0 0 1-36-3l275-275 73 73-312 205z"/>
+  </svg>
+)
+
 const StoreButton = ({app}) =>
-  <a className="store-button" href={playUrl(app)} target="_blank" rel="noopener noreferrer">
-    <small>Get it on</small><strong>Google Play</strong>
+  <a className="store-button" href={playUrl(app)} target="_blank" rel="noopener noreferrer"
+     aria-label={`Get ${app.name} on Google Play`}>
+    <PlayGlyph/>
+    <span><small>Get it on</small><strong>Google Play</strong></span>
   </a>
 
 /* ---------- Theme ---------- */
@@ -253,6 +179,30 @@ function useTheme(){
     try{ localStorage.setItem('bz-theme', theme) }catch{}
   },[theme])
   return [theme, ()=>setTheme(t => t === 'dark' ? 'light' : 'dark')]
+}
+
+/* Reading-progress bar under the header. Uses a CSS scroll-driven animation
+   where supported and falls back to a passive scroll listener elsewhere. */
+function ScrollProgress(){
+  const ref = useRef(null)
+  useEffect(()=>{
+    if(CSS?.supports?.('animation-timeline: scroll()')) return  // CSS handles it
+    const el = ref.current
+    if(!el) return
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const h = document.documentElement
+      const max = h.scrollHeight - h.clientHeight
+      el.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`
+    }
+    const onScroll = () => { if(!raf) raf = requestAnimationFrame(update) }
+    update()
+    addEventListener('scroll', onScroll, { passive:true })
+    addEventListener('resize', onScroll, { passive:true })
+    return ()=>{ removeEventListener('scroll', onScroll); removeEventListener('resize', onScroll); cancelAnimationFrame(raf) }
+  },[])
+  return <div className="scroll-progress" ref={ref}/>
 }
 
 function ScrollToTop(){
@@ -333,6 +283,7 @@ function AppCard({app, index=0}){
 /* ---------- Pages ---------- */
 const pad = (n) => String(n).padStart(2,'0')
 
+
 function Home(){
   const featured = [apps[0], apps[4], apps[6]]
   const games = apps.filter(a=>a.type==='Game').length
@@ -350,14 +301,14 @@ function Home(){
         </motion.p>
         <motion.div className="hero-actions" initial={{opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{duration:.75,delay:.36,ease}}>
           <Link className="button primary" to="/apps">Explore apps <b>↓</b></Link>
-          <a className="button ghost" href="#featured">View featured <b>↘</b></a>
+          <a className="button ghost" href="#all-apps">Browse all {apps.length} <b>↘</b></a>
         </motion.div>
       </section>
       <div className="hero-rule"/>
 
       <section className="stats">
-        {[[pad(apps.length),'Apps'],[pad(games),'Games'],[pad(utils),'Utilities'],['01','Developer']].map(([num,label],i)=>
-          <Rise delay={i*.07} key={label} ><b>{num}</b><span>{label}</span></Rise>
+        {[[apps.length,'Apps'],[games,'Games'],[utils,'Utilities'],[1,'Developer']].map(([num,label],i)=>
+          <Rise delay={i*.07} key={label}><b>{pad(num)}</b><span>{label}</span></Rise>
         )}
       </section>
 
@@ -381,6 +332,48 @@ function Home(){
             </Rise>
           )}
         </div>
+      </section>
+
+      {/* Every app, right on the home page — no navigation needed to find one. */}
+      <section id="all-apps" className="section catalog">
+        <Rise className="section-top">
+          <div>
+            <p className="eyebrow">The whole catalog</p>
+            <h2>All {apps.length} apps,<br/><em>one tap away.</em></h2>
+          </div>
+        </Rise>
+
+        {['Game','Utility'].map(kind=>{
+          const list = apps.filter(a=>a.type===kind)
+          return (
+            <div key={kind} className="catalog-group">
+              <Rise className="catalog-label">
+                <h3>{kind==='Game' ? 'Games' : 'Utilities'}</h3>
+                <span>{list.length}</span>
+              </Rise>
+              <div className="mini-grid">
+                {list.map((app,i)=>
+                  <Rise key={app.id} delay={Math.min(i,5)*.05} className="mini-card">
+                    {/* Card links to details; the Play badge is a sibling so the
+                        two anchors never nest (invalid HTML). */}
+                    <Link to={`/apps/${app.id}`} className="mini-card-main">
+                      <AppIcon app={app}/>
+                      <div className="mini-card-text">
+                        <strong>{app.name}</strong>
+                        <span>{app.tag}</span>
+                      </div>
+                    </Link>
+                    <a className="mini-get" href={playUrl(app)} target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label={`Get ${app.name} on Google Play`}>
+                      <PlayGlyph/>
+                    </a>
+                  </Rise>
+                )}
+              </div>
+            </div>
+          )
+        })}
       </section>
 
       <Rise as="section" className="statement" >
@@ -486,13 +479,14 @@ function AppPage(){
 function Support({privacy=false}){
   const { id } = useParams()
   const app = id && apps.find(a=>a.id===id)
+  const policy = app ? policies[app.id] : null
 
   if(app) return (
     <>
       <PageIntro
         eyebrow={privacy ? 'Privacy policy' : 'Support'}
         title={`${app.name}.`}
-        body={privacy ? `The full privacy policy for ${app.name}, last updated ${app.policy.updated}.` : `Here’s how we can help with ${app.name}.`}/>
+        body={privacy ? `The full privacy policy for ${app.name}, last updated ${policy.updated}.` : `Here’s how we can help with ${app.name}.`}/>
       {/* Animate on mount, not on scroll: this block sits in the initial viewport,
           and legal copy must never depend on an observer firing to become visible. */}
       <motion.section className="legal"
@@ -501,15 +495,33 @@ function Support({privacy=false}){
           <div className="policy-meta">
             <div><span>App</span><strong>{app.name}</strong></div>
             <div><span>Package</span><strong>{app.pkg}</strong></div>
-            <div><span>Last updated</span><strong>{app.policy.updated}</strong></div>
+            <div><span>Last updated</span><strong>{policy.updated}</strong></div>
           </div>
-          <p className="policy-lede">{app.policy.summary}</p>
-          {app.policy.sections.map(([heading,body])=>
-            <React.Fragment key={heading}>
-              <h3>{heading}</h3>
-              <p>{body}</p>
-            </React.Fragment>
-          )}
+          {/* Rendered verbatim from the published policy — see src/policies.js */}
+          {policy.sections.map((sec,si)=>{
+            const blocks = []
+            let list = null
+            sec.body.forEach(([kind,text],bi)=>{
+              if(kind === 'li'){
+                if(!list){ list = []; blocks.push({t:'ul', items:list}) }
+                list.push(<li key={bi}>{text}</li>)
+              } else if(kind === 'lab'){
+                list = null
+                blocks.push({t:'p', node:<h4 className="policy-sub" key={bi}>{text}</h4>})
+              } else {
+                list = null
+                blocks.push({t:'p', node:<p key={bi}>{text}</p>})
+              }
+            })
+            return (
+              <React.Fragment key={si}>
+                {si > 0 && <h3>{sec.h}</h3>}
+                {blocks.map((b,i)=> b.t === 'ul'
+                  ? <ul className="policy-list" key={i}>{b.items}</ul>
+                  : b.node)}
+              </React.Fragment>
+            )
+          })}
           <h3>Contact</h3>
           <p>
             For privacy questions or data-deletion requests relating to {app.name}, email{' '}
@@ -611,6 +623,7 @@ function App(){
     <BrowserRouter>
       <ScrollToTop/>
       <Header/>
+      <ScrollProgress/>
       <main><AnimatedRoutes/></main>
       <Footer/>
     </BrowserRouter>
