@@ -10,13 +10,13 @@ const apps = [
   {
     id:'arrow-puzzle', name:'Arrow Puzzle Escape', type:'Game', tag:'Logic puzzle',
     pkg:'com.arrowspuzzle.escape', mark:'↗', color:'#ff9f0a', accent:'gold',
-    icon:'https://play-lh.googleusercontent.com/NWTG9gMWURbe2zALZrFNpHa8uGUPr_nZkYi3N2faqIhH4c3tu-fxdyISZoqo5w8F8j-X3Esa-VRfnZ44KkOqVA=w300-h300',
+    icon:'/icons/arrow-puzzle.png',
+    shots:['/shots/arrow-puzzle-1.jpg','/shots/arrow-puzzle-2.jpg','/shots/arrow-puzzle-3.jpg','/shots/arrow-puzzle-4.jpg'],
     description:'Fifty hand-crafted levels built around a single mechanic: clear directional arrows in exactly the right order to find your way out.',
     features:['50 handcrafted levels','Pure logic, no timers','Plays fully offline'],
     policyUrl:'https://kaushalbahl007.github.io/Privacy-policy-arrow-puzzle/',
     policy:{
       updated:'July 12, 2026',
-      email:'kaushalbahl007@gmail.com',
       summary:'Arrow Puzzle Escape does not collect personal information. Your progress stays on your device.',
       sections:[
         ['Information we collect','We do not collect personal information such as your name, email address or phone number. Your game progress — completed levels, stars, points and coins — is stored only on your device and is never sent to us.'],
@@ -30,13 +30,13 @@ const apps = [
   {
     id:'flowpath', name:'Flow Path: Pipe Puzzle Game', type:'Game', tag:'Pipe puzzle',
     pkg:'com.flowpath.game', mark:'✦', color:'#7a9a86', accent:'green',
-    icon:'https://play-lh.googleusercontent.com/PrZeNNdyqiHpE5gSBkUYg7Kd86Bu8axNd18H9I0KL3q6FvNSXaZJCZuYU_rIyc_g_ahDEq4pBOB3PsjR0BA1=w300-h300',
+    icon:'/icons/flowpath.png',
+    shots:['/shots/flowpath-1.png','/shots/flowpath-2.jpg','/shots/flowpath-3.jpg','/shots/flowpath-4.jpg'],
     description:'Connect matching colour dots with flowing pipes until every cell on the board fills — a calmer, more meditative take on the classic pipe genre.',
     features:['Relaxed, meditative pacing','Progress stored locally','Plays fully offline'],
     policyUrl:'https://kaushalbahl007.github.io/PATHFLOW-privacy-policy/',
     policy:{
       updated:'April 18, 2026',
-      email:'flowpathgame@gmail.com',
       summary:'Flow Path collects no personally identifiable information. Game progress is stored locally on your device only.',
       sections:[
         ['Information we collect','The app itself collects no personally identifiable information. Third-party SDKs gather device identifiers (advertising ID, device model, OS version) and ad interaction metrics. Game progress is stored locally on your device only.'],
@@ -49,13 +49,13 @@ const apps = [
   {
     id:'ludo', name:'Ludo Indian Adition', type:'Game', tag:'Board game',
     pkg:'com.ludoindianedition', mark:'◉', color:'#c97260', accent:'red',
-    icon:'https://play-lh.googleusercontent.com/Ns4d87N_eZz4IiRkx1c4Bd57SrNPXbKwNUVLvdYigufy1bKj8bwJBMhV26bBIaIap6uJHhSV8xoc6zgPswIJ4Q=w300-h300',
+    icon:'/icons/ludo.png',
+    shots:['/shots/ludo-1.png','/shots/ludo-2.png','/shots/ludo-3.png','/shots/ludo-4.png'],
     description:'A modern, vibrant take on the beloved Indian classic, built for smooth local multiplayer between two and four players on one device.',
     features:['Local multiplayer for 2–4 players','Classic rules, modern feel','Quick rounds'],
     policyUrl:'https://kaushalbahl007.github.io/privacy-policy/',
     policy:{
       updated:'April 2026',
-      email:'kaushalbahl007@gmail.com',
       summary:'Ludo Indian Adition collects limited device and usage data to run and improve the game.',
       sections:[
         ['Information we collect','We collect device information (device model, operating system version) and usage data (game activity, session duration), along with IP addresses used for performance optimisation.'],
@@ -69,13 +69,13 @@ const apps = [
   {
     id:'block-burst', name:'Block Burst: Wood Puzzle', type:'Game', tag:'Block puzzle',
     pkg:'com.benzenestudio.block_burst', mark:'▦', color:'#8d95a8', accent:'blue',
-    icon:'https://play-lh.googleusercontent.com/GdlsAdJ744nB_iyzQGj30pdfyAzCwAfIC1PLxEwDgAYj7rztWGjMXxRsZpSpViFvrTJ2kJrJvRlurZbDOTeusA=w300-h300',
+    icon:'/icons/block-burst.png',
+    shots:['/shots/block-burst-1.png','/shots/block-burst-2.jpg','/shots/block-burst-3.jpg','/shots/block-burst-4.jpg'],
     description:'Place wooden blocks on an 8×8 grid and clear full rows and columns before the board fills up — calm on the surface, sharper the longer you play.',
     features:['Endless 8×8 gameplay','Optional one-time ad removal','Progress stored on device'],
     policyUrl:'https://kaushalbahl007.github.io/block_burst_privacy_policy/',
     policy:{
       updated:'May 15, 2026',
-      email:'kaushalbahl007@gmail.com',
       summary:'Block Burst stores game progress on your device only. No personal identifiers, location data or cross-app tracking.',
       sections:[
         ['Information we collect','Only local device storage is used: game progress (scores, levels completed, achievements) and app settings. We collect no personal identifiers, no location data, and perform no cross-app tracking.'],
@@ -89,13 +89,13 @@ const apps = [
   {
     id:'marble-ball-sort', name:'Marble Ball Sort: Tube Puzzle', type:'Game', tag:'Colour sorting',
     pkg:'com.tubesort.puzzle', mark:'●', color:'#cf9f57', accent:'gold',
-    icon:'https://play-lh.googleusercontent.com/DH3wra2kkZ8w7BauuxoNkQvSNe8hP86kIxf-yTIRSOgSbMH0CMvN4pPcHGmBN5C9nJ_bPXb4SS7rYYe-LOxR9g=w300-h300',
+    icon:'/icons/marble-ball-sort.png',
+    shots:['/shots/marble-ball-sort-1.jpg','/shots/marble-ball-sort-2.jpg','/shots/marble-ball-sort-3.jpg','/shots/marble-ball-sort-4.jpg'],
     description:'Sort coloured marbles into matching tubes, one careful move at a time — 500 handcrafted levels across eight difficulty tiers.',
     features:['500 handcrafted levels','Eight difficulty tiers','Progress stored on device'],
     policyUrl:'https://kaushalbahl007.github.io/tube_sort_privacy_policy/',
     policy:{
       updated:'May 16, 2026',
-      email:'kaushalbahl007@gmail.com',
       summary:'Marble Ball Sort does not directly collect personal information. All game progress stays on your device.',
       sections:[
         ['Information we collect','We do not directly collect personal information such as your name or email address. Third-party services automatically gather device model, OS version, unique device identifiers, gameplay metrics and advertising identifiers.'],
@@ -108,13 +108,13 @@ const apps = [
   {
     id:'snake-tangle', name:'Snake Tangle: Snake Game', type:'Game', tag:'Arcade',
     pkg:'com.snaketangle.app', mark:'⌁', color:'#30d158', accent:'green',
-    icon:'https://play-lh.googleusercontent.com/ilFw99SeHEpPXMcFiGEO9qOLdrLVwDUwcKp72P0mvbtsWYsNnbQccZv50vcaE4uEWT_4SDv0hHK1jNGHHDivsJA=w300-h300',
+    icon:'/icons/snake-tangle.png',
+    shots:['/shots/snake-tangle-1.jpg','/shots/snake-tangle-2.jpg','/shots/snake-tangle-3.jpg','/shots/snake-tangle-4.jpg'],
     description:'The classic reflex game, rebuilt with endless mode, challenge levels, time attack and daily challenges — fully offline, no wifi required.',
     features:['Endless, challenge and time attack','Daily challenges','Plays fully offline'],
     policyUrl:'https://kaushalbahl007.github.io/snakeTanglePolicy/',
     policy:{
       updated:'May 2026',
-      email:'myselfkaushal.kumar@gmail.com',
       summary:'Snake Tangle stores progress locally and integrates no analytics SDKs. Rated for ages 3+ with non-personalised ads for under-13s.',
       sections:[
         ['Information we collect','Game progress is stored locally using SharedPreferences. We do not collect personal identifiers such as names, email addresses or location data.'],
@@ -128,13 +128,13 @@ const apps = [
   {
     id:'docsnap', name:'DocSnap: PDF Scanner & Editor', type:'Utility', tag:'Documents',
     pkg:'com.docsnap.app', mark:'▤', color:'#cf9f57', accent:'gold',
-    icon:'https://play-lh.googleusercontent.com/ZYmvQmmhaLQSA7y3hI86fgSifZyTmvDtLgI2wioa7QbUj4RNeDsIKzyFVSEiDSJkUeStvCN7NdFdo2G_N5xcwg=w300-h300',
+    icon:'/icons/docsnap.png',
+    shots:['/shots/docsnap-1.jpg','/shots/docsnap-2.jpg','/shots/docsnap-3.jpg','/shots/docsnap-4.jpg'],
     description:'Scan, sign, merge and edit PDFs entirely on-device — no watermark, no sign-up and no ads.',
     features:['Scan, sign, merge and edit PDFs','On-device OCR with ML Kit','No watermark, no sign-up'],
     policyUrl:'https://kaushalbahl007.github.io/docflow-privacy/',
     policy:{
       updated:'July 17, 2026',
-      email:'kaushal.kumar@gmail.com',
       summary:'DocSnap does not collect, transmit or store your documents. Everything is processed on your device.',
       sections:[
         ['Information we collect','DocSnap does not collect, transmit or store your document contents, OCR text, signatures, personal identifiers or location data. All processing happens locally on your device.'],
@@ -149,13 +149,13 @@ const apps = [
   {
     id:'jyotish', name:'Jyotish: Janam Kundli & Dasha', type:'Utility', tag:'Astrology',
     pkg:'in.jyotishapp.vedic', mark:'☼', color:'#c97260', accent:'red',
-    icon:'https://play-lh.googleusercontent.com/Z9w5gI6jiRjezILwUTcrNlLaCkDjZQQ5PqO-EOJNPOaaIuDI9pDhSfFxoc7-w1g-vOzDNGwzETAAZ4Ysp7gHMd4=w300-h300',
+    icon:'/icons/jyotish.png',
+    shots:['/shots/jyotish-1.jpg','/shots/jyotish-2.jpg','/shots/jyotish-3.jpg','/shots/jyotish-4.jpg'],
     description:'Birth charts, Vimshottari dashas, Panchang and kundli matching calculated fully offline — no birth details are uploaded to any server.',
     features:['Janam kundli and Vimshottari dasha','Panchang and kundli matching','Calculated fully on-device'],
     policyUrl:'https://kaushalbahl007.github.io/jyotish-privacy/',
     policy:{
       updated:'July 2026',
-      email:'myselfkaushal.kumar@gmail.com',
       summary:'Your birth data belongs to you, not us. Birth details never leave your device.',
       sections:[
         ['Information we collect','To generate astrological charts the app asks for your name, date of birth, time of birth and place of birth (city or coordinates). This information stays exclusively on your device.'],
@@ -168,7 +168,7 @@ const apps = [
   },
 ]
 
-const SUPPORT_EMAIL = 'myselfkaushal.kumar@gmail.com'
+const SUPPORT_EMAIL = 'kaushalbahl007@gmail.com'
 /* Links to a published listing — the developer profile URL isn't a stable/known id. */
 const PLAY_DEV = PLAY + apps[0].pkg
 
@@ -457,11 +457,9 @@ function AppPage(){
           <h2>Made to feel right.</h2>
         </Rise>
         <div className="screen-row">
-          {[1,2,3].map(n=>
-            <Rise delay={n*.1} className={`phone-screen ${app.accent}`} key={n} >
-              <span>{app.mark}</span>
-              <small>{app.name}</small>
-              <b>{n===1 ? app.tag : n===2 ? 'Play your way' : 'Made with care'}</b>
+          {(app.shots || []).map((src,n)=>
+            <Rise delay={n*.1} className="phone-screen" key={src}>
+              <img src={src} alt={`${app.name} screenshot ${n+1}`} loading="lazy" decoding="async"/>
             </Rise>
           )}
         </div>
@@ -515,7 +513,7 @@ function Support({privacy=false}){
           <h3>Contact</h3>
           <p>
             For privacy questions or data-deletion requests relating to {app.name}, email{' '}
-            <a href={`mailto:${app.policy.email}`}>{app.policy.email}</a>.
+            <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
           </p>
           <p className="policy-source">
             <a href={app.policyUrl} target="_blank" rel="noopener noreferrer">View the original published policy ↗</a>
@@ -527,7 +525,7 @@ function Support({privacy=false}){
             <details><summary>Can I restore my progress?<b>+</b></summary><p>Progress in {app.name} is stored locally on your device, so it does not transfer between devices and is removed if you uninstall the app.</p></details>
             <details><summary>Does the app require internet access?<b>+</b></summary><p>Most Benzene Studio games play fully offline. A connection is only needed to serve ads or download updates.</p></details>
           </div>
-          <p className="support-email">Still need help? <a href={`mailto:${app.policy.email}`}>{app.policy.email} ↗</a></p>
+          <p className="support-email">Still need help? <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL} ↗</a></p>
           <p className="policy-source"><Link to={`/privacy/${app.id}`}>Read the {app.name} privacy policy →</Link></p>
         </>}
       </motion.section>

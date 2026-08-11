@@ -40,8 +40,11 @@
   --spring:cubic-bezier(.34,1.56,.64,1);
 
   /* Layout */
+  /* Content column. Wide enough to fill large displays, with the gutter
+     matching the header so every section lines up edge to edge. */
   --max:1180px;
-  --pad:max(22px,calc((100vw - var(--max))/2));
+  --gutter:clamp(20px,3vw,48px);
+  --pad:max(var(--gutter),calc((100vw - var(--max))/2));
 }
 
 @media (prefers-color-scheme:dark){
@@ -131,7 +134,9 @@ h1,h2,h3,h4,h5{margin:0;font-weight:600;letter-spacing:-.03em;line-height:1.06}
 header{
   position:sticky;top:0;z-index:100;
   height:52px;
-  padding:0 var(--pad);
+  /* Full-bleed bar: content hugs the viewport edges, aligned to the
+     same gutter every section below uses. */
+  padding:0 var(--gutter);
   display:flex;align-items:center;justify-content:space-between;
   background:var(--nav-bg);
   backdrop-filter:saturate(180%) blur(20px);
@@ -267,11 +272,17 @@ nav a.active::after{
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
 
 /* ---------- Hero ---------- */
+/* Full-bleed hero: the section fills the viewport width (so the ambient
+   glows reach the edges), while its text stays in the centred column. */
 .hero{
   position:relative;overflow:hidden;
-  max-width:var(--max);margin:auto;
-  padding:130px 22px 96px;
+  width:100%;
+  padding:130px var(--gutter) 96px;
   text-align:center;
+}
+.hero > *:not(.glow){
+  max-width:var(--max);
+  margin-left:auto;margin-right:auto;
 }
 .hero h1{
   font-size:clamp(44px,7.5vw,88px);
@@ -320,7 +331,7 @@ nav a.active::after{
 /* ---------- Stats ---------- */
 .stats{
   max-width:var(--max);margin:0 auto;
-  padding:56px 22px 96px;
+  padding:56px var(--gutter) 96px;
   display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
 }
 .stats div{
@@ -344,7 +355,7 @@ nav a.active::after{
 }
 
 /* ---------- Sections ---------- */
-.section{max-width:var(--max);margin:auto;padding:96px 22px}
+.section{max-width:var(--max);margin:auto;padding:96px var(--gutter)}
 .section-top{
   display:flex;align-items:flex-end;justify-content:space-between;
   gap:30px;margin-bottom:48px;
@@ -400,7 +411,7 @@ nav a.active::after{
 .statement{
   max-width:var(--max);margin:auto;
   border-top:1px solid var(--hairline);
-  padding:110px 22px;
+  padding:110px var(--gutter);
   display:grid;grid-template-columns:1fr 1fr;column-gap:80px;
 }
 .statement .eyebrow{grid-column:1}
@@ -446,7 +457,7 @@ nav a.active::after{
 /* ---------- Page intro ---------- */
 .page-intro{
   max-width:var(--max);margin:auto;
-  padding:100px 22px 64px;
+  padding:100px var(--gutter) 64px;
   border-bottom:1px solid var(--hairline);
 }
 .page-intro h1{
@@ -460,7 +471,7 @@ nav a.active::after{
 /* ---------- App grid ---------- */
 .app-grid{
   max-width:var(--max);margin:auto;
-  padding:56px 22px 110px;
+  padding:56px var(--gutter) 110px;
   display:grid;grid-template-columns:repeat(2,1fr);gap:16px;
 }
 .app-card{
@@ -489,7 +500,7 @@ nav a.active::after{
 .app-hero{
   position:relative;
   max-width:var(--max);margin:auto;
-  padding:100px 22px 88px;
+  padding:100px var(--gutter) 88px;
   display:flex;align-items:center;gap:40px;
   border-bottom:1px solid var(--hairline);
 }
@@ -507,7 +518,7 @@ nav a.active::after{
 
 .detail-grid{
   max-width:var(--max);margin:auto;
-  padding:100px 22px;
+  padding:100px var(--gutter);
   display:grid;grid-template-columns:1fr 1fr;gap:70px;
 }
 .detail-grid ul{list-style:none;margin:0;padding:0}
@@ -523,39 +534,33 @@ nav a.active::after{
 /* ---------- Screens ---------- */
 .screens{
   max-width:var(--max);margin:auto;
-  padding:80px 22px 110px;
+  padding:80px var(--gutter) 110px;
   border-top:1px solid var(--hairline);
 }
 .screens h2{margin-bottom:48px}
 .screen-row{display:flex;gap:28px}
+/* Real store screenshots in a device frame */
 .phone-screen{
-  position:relative;overflow:hidden;
-  width:250px;aspect-ratio:9/16;
-  padding:38px 24px;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  border:9px solid var(--bg-elevated);
-  border-radius:44px;
+  position:relative;overflow:hidden;flex:none;
+  width:240px;aspect-ratio:9/19.5;
+  background:#000;
+  border:8px solid var(--bg-elevated);
+  border-radius:38px;
   box-shadow:var(--shadow-lg),inset 0 0 0 1px var(--line);
-  color:#fff;
   transition:transform .5s var(--ease-out),box-shadow .5s var(--ease);
   will-change:transform;
 }
-.phone-screen:hover{transform:translateY(-10px) rotate(-1.5deg)}
-.phone-screen::before{
-  content:'';position:absolute;
-  width:86px;height:24px;top:10px;left:50%;
-  transform:translateX(-50%);
-  background:#000;border-radius:980px;
+.phone-screen:hover{transform:translateY(-10px) rotate(-1.5deg);box-shadow:var(--shadow-lg)}
+.phone-screen img{
+  display:block;width:100%;height:100%;
+  object-fit:cover;object-position:top center;
 }
-.phone-screen span{font-size:44px;margin-bottom:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.3))}
-.phone-screen small{font:500 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;opacity:.85}
-.phone-screen b{font-size:26px;letter-spacing:-.03em;margin-top:8px;font-weight:600}
 
 /* ---------- App links ---------- */
 .app-links{
   max-width:var(--max);margin:0 auto 110px;
   display:grid;grid-template-columns:1fr 1fr;gap:20px;
-  padding:0 22px;
+  padding:0 var(--gutter);
 }
 .app-links>div{
   padding:40px;
@@ -581,12 +586,12 @@ nav a.active::after{
 /* ---------- Choice grid ---------- */
 .choice-grid{
   max-width:var(--max);margin:auto;
-  padding:56px 22px 110px;
+  padding:56px var(--gutter) 110px;
   display:grid;grid-template-columns:repeat(2,1fr);gap:14px;
 }
 .choice-grid a{
   display:flex;gap:18px;align-items:center;
-  padding:18px 22px;
+  padding:18px var(--gutter);
   background:var(--surface-solid);
   border:1px solid var(--line);
   border-radius:var(--r-md);
@@ -603,7 +608,7 @@ nav a.active::after{
 }
 
 /* ---------- Legal / simple ---------- */
-.legal,.simple-content{max-width:740px;margin:auto;padding:72px 22px 120px}
+.legal,.simple-content{max-width:740px;margin:auto;padding:72px var(--gutter) 120px}
 .legal h2,.simple-content h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.03em;margin-bottom:20px}
 .legal h3,.simple-content h3{font-size:23px;margin-top:44px;margin-bottom:10px}
 .legal p,.simple-content p{color:var(--text-secondary);line-height:1.7;font-size:17px}
