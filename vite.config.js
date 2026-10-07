@@ -7,6 +7,10 @@ import react from '@vitejs/plugin-react'
    only the built copy in docs/ references the hashed bundle. */
 export default defineConfig({
   plugins: [react()],
+  /* Relative asset URLs so the built page works wherever it is served from —
+     the site root, or a /docs/ subpath under a branch-source Pages deploy.
+     Absolute "/assets/..." paths 404 when the page is not at the origin root. */
+  base: './',
   build: {
     outDir: 'docs',
     emptyOutDir: true,
