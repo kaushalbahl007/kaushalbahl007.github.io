@@ -1,18 +1,29 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-/* Build into docs/ rather than dist/ so GitHub Pages can serve the output
-   directly from a branch source (Settings -> Pages -> /docs). The repo root
-   index.html stays pointed at /src/main.jsx so `npm run dev` keeps working;
-   only the built copy in docs/ references the hashed bundle. */
+const __dirname = dirname(fileURLToPath(import.meta.url))
+
+/* GitHub Pages serves this repo's ROOT from a branch source, so the built
+   site has to land at the root — a root index.html pointing at /src/main.jsx
+   is raw JSX, which browsers reject ("text/jsx") and render as a blank page.
+   The dev template therefore lives at src/index.html (out of the way of the
+   build output), and `vite build` writes the real index.html plus assets/
+   to the repo root. */
 export default defineConfig({
   plugins: [react()],
-  /* Relative asset URLs so the built page works wherever it is served from —
-     the site root, or a /docs/ subpath under a branch-source Pages deploy.
-     Absolute "/assets/..." paths 404 when the page is not at the origin root. */
+  /* Dev server resolves index.html from src/ */
+  root: 'src',
+  publicDir: resolve(__dirname, 'public'),
+  /* Relative asset URLs, so the page works at the root or any subpath. */
   base: './',
   build: {
-    outDir: 'docs',
-    emptyOutDir: true,
+    outDir: resolve(__dirname, '.'),
+    /* The output directory is the repo itself — never wipe it. */
+    emptyOutDir: false,
+    rollupOptions: {
+      input: resolve(__dirname, 'src/index.html'),
+    },
   },
 })

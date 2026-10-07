@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp docs/index.html docs/404.html && touch docs/.nojekyll",
+    "build": "vite build && cp index.html 404.html && touch .nojekyll",
     "preview": "vite preview"
   },
   "dependencies": {
