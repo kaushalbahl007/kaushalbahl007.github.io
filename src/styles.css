@@ -282,6 +282,10 @@ nav a.active::after{
   width:24px;height:24px;flex:none;position:relative;
   filter:drop-shadow(0 1px 3px rgba(0,0,0,.4));
 }
+/* Apple mark is a single filled path — slightly smaller and lifted a hair so
+   it sits on the same optical centre as the Play triangle. */
+.store-button.apple .play-glyph{width:22px;height:22px;margin-top:-2px}
+.mini-get.apple .play-glyph{width:16px;height:16px}
 .store-button span{position:relative;display:flex;flex-direction:column}
 .store-button small{
   font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;

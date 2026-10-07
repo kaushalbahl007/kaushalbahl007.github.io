@@ -6,6 +6,7 @@ import { policies } from './policies'
 import './styles.css'
 
 const PLAY = 'https://play.google.com/store/apps/details?id='
+const APPSTORE = 'https://apps.apple.com/app/'
 
 const apps = [
   {
@@ -79,6 +80,18 @@ const apps = [
     description:'Birth charts, Vimshottari dashas, Panchang and kundli matching calculated fully offline — no birth details are uploaded to any server.',
     features:['Janam kundli and Vimshottari dasha','Panchang and kundli matching','Calculated fully on-device'],
     policyUrl:'https://kaushalbahl007.github.io/jyotish-privacy/',
+  },
+  {
+    /* iOS-only. `store:'ios'` switches the badge and the id shown under it;
+       appId is the numeric App Store id — fill it in once the listing is live. */
+    id:'night-atlas', name:'Night Atlas', type:'Game', tag:'Word puzzle',
+    store:'ios', appId:'', pkg:'com.benzenestudios.nightatlas',
+    email:'myselfkaushal.kumar@gmail.com',
+    mark:'☾', color:'#7fae98', accent:'green',
+    icon:'/icons/night-atlas.png',
+    shots:['/shots/night-atlas-1.jpg','/shots/night-atlas-2.jpg','/shots/night-atlas-3.jpg','/shots/night-atlas-4.jpg'],
+    description:'A word puzzle built for the quiet hours — daily challenges, streaks and a growing atlas of levels, all stored on your own device and never sent anywhere.',
+    features:['Daily challenge and streaks','No accounts, no analytics, no servers','Optional premium subscription removes adverts'],
   },
 ]
 
@@ -158,12 +171,28 @@ const PlayGlyph = () => (
   </svg>
 )
 
-const StoreButton = ({app}) =>
-  <a className="store-button" href={playUrl(app)} target="_blank" rel="noopener noreferrer"
-     aria-label={`Get ${app.name} on Google Play`}>
-    <PlayGlyph/>
-    <span><small>Get it on</small><strong>Google Play</strong></span>
-  </a>
+/* Apple logo, drawn inline to match PlayGlyph (no request, scales crisply). */
+const AppleGlyph = () => (
+  <svg className="play-glyph" viewBox="0 0 384 512" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9m-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3"/>
+  </svg>
+)
+
+const StoreButton = ({app}) => {
+  const ios = app.store === 'ios'
+  /* Without a numeric id yet, point at the store's search for the app name
+     rather than a URL that would 404. */
+  const href = ios
+    ? (app.appId ? `${APPSTORE}id${app.appId}` : `https://apps.apple.com/search?term=${encodeURIComponent(app.name)}`)
+    : playUrl(app)
+  return (
+    <a className={`store-button ${ios ? 'apple' : ''}`} href={href} target="_blank" rel="noopener noreferrer"
+       aria-label={`Get ${app.name} on the ${ios ? 'App Store' : 'Google Play'}`}>
+      {ios ? <AppleGlyph/> : <PlayGlyph/>}
+      <span><small>{ios ? 'Download on the' : 'Get it on'}</small><strong>{ios ? 'App Store' : 'Google Play'}</strong></span>
+    </a>
+  )
+}
 
 /* ---------- Theme ---------- */
 function useTheme(){
@@ -363,10 +392,13 @@ function Home(){
                         <span>{app.tag}</span>
                       </div>
                     </Link>
-                    <a className="mini-get" href={playUrl(app)} target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label={`Get ${app.name} on Google Play`}>
-                      <PlayGlyph/>
+                    <a className={`mini-get ${app.store==='ios' ? 'apple' : ''}`}
+                       href={app.store==='ios'
+                         ? (app.appId ? `${APPSTORE}id${app.appId}` : `https://apps.apple.com/search?term=${encodeURIComponent(app.name)}`)
+                         : playUrl(app)}
+                       target="_blank" rel="noopener noreferrer"
+                       aria-label={`Get ${app.name} on the ${app.store==='ios' ? 'App Store' : 'Google Play'}`}>
+                      {app.store==='ios' ? <AppleGlyph/> : <PlayGlyph/>}
                     </a>
                   </Rise>
                 )}
@@ -405,7 +437,7 @@ function AppListing({filter}){
         title={filter==='Game' ? 'Good games, no fuss.' : filter==='Utility' ? 'Useful by design.' : 'Apps with a point.'}
         body={filter==='Game' ? 'Small, satisfying games for a quick break or a longer unwind.'
           : filter==='Utility' ? 'Focused tools that get out of your way.'
-          : 'Eight focused products, all built with the same care.'}/>
+          : `${apps.length} focused products, all built with the same care.`}/>
       <section className="app-grid">
         {shown.map((a,i)=><AppCard app={a} index={i} key={a.id}/>)}
       </section>
@@ -444,19 +476,20 @@ function AppPage(){
         </Rise>
       </section>
 
-      <section className="screens">
+      {/* Hidden until artwork exists — an empty strip reads as a broken page. */}
+      {(app.shots?.length ?? 0) > 0 && <section className="screens">
         <Rise >
           <p className="eyebrow">A closer look</p>
           <h2>Made to feel right.</h2>
         </Rise>
         <div className="screen-row">
-          {(app.shots || []).map((src,n)=>
+          {app.shots.map((src,n)=>
             <Rise delay={n*.1} className="phone-screen" key={src}>
               <img src={src} alt={`${app.name} screenshot ${n+1}`} loading="lazy" decoding="async"/>
             </Rise>
           )}
         </div>
-      </section>
+      </section>}
 
       <section className="app-links">
         <Rise >
@@ -525,11 +558,11 @@ function Support({privacy=false}){
           <h3>Contact</h3>
           <p>
             For privacy questions or data-deletion requests relating to {app.name}, email{' '}
-            <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
+            <a href={`mailto:${app.email || SUPPORT_EMAIL}`}>{app.email || SUPPORT_EMAIL}</a>.
           </p>
-          <p className="policy-source">
+          {app.policyUrl && <p className="policy-source">
             <a href={app.policyUrl} target="_blank" rel="noopener noreferrer">View the original published policy ↗</a>
-          </p>
+          </p>}
         </> : <>
           <h2>Common questions</h2>
           <div className="faq">

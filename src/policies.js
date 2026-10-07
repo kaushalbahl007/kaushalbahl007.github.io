@@ -556,4 +556,65 @@ export const policies = {
       ]},
     ],
   },
+  'night-atlas': {
+    updated: '8 October 2026',
+    sections: [
+      { h: 'Privacy Policy', body: [
+        ['p', 'Night Atlas is a word puzzle game. It has no accounts, no sign-in and no servers of our own. Your puzzle progress is stored on your device and stays there.'],
+        ['p', 'Applies to Night Atlas for iOS.'],
+        ['lab', 'The short version'],
+        ['p', 'We do not collect, store or transmit your personal information. Night Atlas has no account system, no analytics and no backend. Everything the game knows about you — your progress, your streak, your settings — is written to your own device and never leaves it.'],
+        ['p', 'Two companies do receive some data when you use certain features: Google, if you choose to watch an advert for a hint, and Apple, if you buy a subscription. Both are described below.'],
+      ]},
+      { h: 'What the app stores on your device', body: [
+        ['p', 'Night Atlas keeps a local database on your phone. It holds only what the game needs in order to carry on where you left off:'],
+        ['li', 'Which puzzles and levels you have finished, and the words you found'],
+        ['li', 'How long each puzzle took and how many hints you used'],
+        ['li', 'Your daily challenge streak and your lifetime statistics'],
+        ['li', 'Your points balance and anything you have unlocked with it'],
+        ['li', 'Your settings — theme, difficulty, board shape, sound'],
+        ['p', 'None of this is personal information, none of it identifies you, and none of it is sent anywhere. It is removed when you delete the app.'],
+      ]},
+      { h: 'Third parties', body: [
+        ['p', 'Below is every party that can receive data when you use Night Atlas, and what triggers it.'],
+        ['li', 'Game progress — your device only. Always; never transmitted.'],
+        ['li', 'Settings — your device only. Always; never transmitted.'],
+        ['li', 'Advertising identifiers — Google AdMob. Only when you choose to watch a rewarded advert.'],
+        ['li', 'Purchase receipt — Apple. Only when you buy or restore a subscription.'],
+        ['li', 'Font files — Google Fonts. Downloaded once, to display the game’s typefaces.'],
+        ['li', 'A score you share — whoever you send it to. Only when you tap Share and pick an app.'],
+        ['p', 'We never see any of this. We receive no reports about you from Google or Apple beyond the anonymous, aggregated totals every developer gets — how many people installed the app, how many adverts were shown — which cannot be traced back to an individual.'],
+      ]},
+      { h: 'Advertising and tracking', body: [
+        ['p', 'Night Atlas shows rewarded adverts only. There are no banners, no adverts between puzzles, and nothing that interrupts a game. An advert appears only if you tap a button asking to watch one in exchange for hints — never otherwise.'],
+        ['p', 'Those adverts are served by Google AdMob, which may use your device’s advertising identifier to choose what to show and to measure whether it worked. Google’s handling of that data is covered by its own policy: How Google uses information from sites or apps that use our services.'],
+        ['lab', 'Your choice about tracking'],
+        ['p', 'On iOS, apps must ask before tracking you across other companies’ apps and websites. If Night Atlas asks, you can decline, and adverts will still work — they will simply be less targeted. You can change your mind at any time in Settings → Privacy & Security → Tracking, and you can reset or disable your advertising identifier entirely in Settings → Privacy & Security → Apple Advertising.'],
+        ['p', 'Subscribers see no adverts at all.'],
+      ]},
+      { h: 'Subscriptions', body: [
+        ['p', 'Night Atlas offers an optional premium subscription. Purchases are handled entirely by Apple through the App Store — we never see or receive your payment details, card number or billing address.'],
+        ['p', 'Your subscription status is stored on your device as a single yes-or-no value. Apple’s handling of the transaction is covered by the Apple Privacy Policy.'],
+      ]},
+      { h: 'Children', body: [
+        ['p', 'Night Atlas is suitable for all ages and contains no content unsuitable for children. We do not knowingly collect personal information from anyone, children included, because we do not collect personal information at all.'],
+        ['p', 'Parents who would prefer their child saw no adverts can disable the advertising identifier on the device, or use a premium subscription, which removes adverts entirely.'],
+      ]},
+      { h: 'Your rights', body: [
+        ['p', 'Privacy laws including the UK GDPR, the EU GDPR and the California Consumer Privacy Act give you rights over personal information a company holds about you — to see it, correct it, delete it, or object to how it is used.'],
+        ['p', 'We hold none, so there is nothing for us to show you or delete. The data the game creates is yours already and sits on your own device, entirely under your control.'],
+        ['p', 'To exercise these rights against Google or Apple for data they hold, contact them directly using the policies linked above.'],
+      ]},
+      { h: 'Deleting your data', body: [
+        ['p', 'Delete the app. Everything the game stored goes with it — progress, statistics, streak, settings and points. There is no copy anywhere else and nothing for you to ask us to erase.'],
+        ['p', 'Note that this is permanent: there is no cloud backup to restore from, so reinstalling the app starts a fresh game.'],
+      ]},
+      { h: 'Changes to this policy', body: [
+        ['p', 'If the app changes in a way that affects your privacy — a new feature that sends data somewhere, say — we will update this page and change the date at the top. Material changes will also be noted in the App Store release notes for that version.'],
+      ]},
+      { h: 'Publisher', body: [
+        ['p', 'Night Atlas is published by Benzene Studios. This policy applies to the iOS app and to no other product.'],
+      ]},
+    ],
+  },
 }
