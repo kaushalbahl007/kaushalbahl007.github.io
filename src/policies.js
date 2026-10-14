@@ -617,4 +617,52 @@ export const policies = {
       ]},
     ],
   },
+  'sudoku-haven': {
+    updated: '14 October 2026',
+    sections: [
+      { h: 'Privacy Policy', body: [
+        ['p', 'Benzene Studio ("we", "us") operates the mobile application Sudoku Haven (the "App"). This policy explains what information the App handles and why.'],
+        ['lab', 'The short version'],
+        ['p', 'Sudoku Haven does not have user accounts, does not ask for your name or email, and does not run servers that store your information. Your puzzles, statistics and settings stay on your device. Advertising and purchases are handled by Google and Apple, who collect information under their own policies.'],
+      ]},
+      { h: 'Information stored on your device', body: [
+        ['p', 'The App saves the following locally, using on-device storage only:'],
+        ['li', 'Game data — puzzles in progress, completed boards, pencil notes, elapsed time, mistakes and hints used'],
+        ['li', 'Progress — puzzles solved, daily streaks, best times, level stars, achievements, and your activity history'],
+        ['li', 'Preferences — theme, accent colour, sound, haptics, reminder settings, and gameplay options'],
+        ['li', 'Purchase state — whether you hold an active subscription, and your remaining hint balance'],
+        ['p', 'This information never leaves your device except as described below. It is not transmitted to us, and we have no ability to access it. Deleting the App removes all of it permanently.'],
+      ]},
+      { h: 'Advertising', body: [
+        ['p', 'The free version of the App displays advertising supplied by Google AdMob. To serve ads, Google may collect and process device information including advertising identifiers, approximate location derived from IP address, device type, and interactions with ads.'],
+        ['p', 'We do not receive this information. It is governed by Google’s privacy policy: https://policies.google.com/privacy'],
+        ['p', 'On iOS, personalised advertising requires your permission through Apple’s App Tracking Transparency prompt. If you decline, you will still see ads, but they will not be personalised.'],
+        ['p', 'You can reset or limit your advertising identifier in your device settings:'],
+        ['li', 'iOS — Settings → Privacy & Security → Tracking'],
+        ['li', 'Android — Settings → Google → Ads'],
+        ['p', 'Rewarded video is always optional. You choose whether to watch one in exchange for hints; nothing in the App requires it.'],
+      ]},
+      { h: 'Purchases', body: [
+        ['p', 'Subscriptions are processed entirely by Apple through the App Store. We never see or receive your payment details, card number, or billing address. Apple provides us only with anonymous confirmation that a subscription is active.'],
+        ['p', 'Apple’s privacy policy: https://www.apple.com/legal/privacy/'],
+        ['p', 'Removing ads through a subscription stops all advertising, including the data collection described above.'],
+      ]},
+      { h: 'Notifications', body: [
+        ['p', 'If you enable the daily reminder, the App schedules a local notification on your device. This uses no server, sends no data anywhere, and can be turned off at any time in Settings or your device’s notification settings.'],
+      ]},
+      { h: 'Children', body: [
+        ['p', 'The App is not directed at children under 13 and we do not knowingly collect information from them. The App has no chat, no user profiles, no social features, and no way to share personal information with other users.'],
+      ]},
+      { h: 'Your choices', body: [
+        ['p', 'Because your data lives only on your device, you remain in control of it:'],
+        ['li', 'Delete everything — uninstall the App'],
+        ['li', 'Stop personalised ads — decline tracking, or reset your advertising identifier in device settings'],
+        ['li', 'Remove ads entirely — subscribe to Sudoku Haven Premium'],
+        ['li', 'Stop notifications — turn off the daily reminder in Settings'],
+      ]},
+      { h: 'Changes', body: [
+        ['p', 'If this policy changes, we will update the date at the top and publish the revised version at the same address.'],
+      ]},
+    ],
+  },
 }

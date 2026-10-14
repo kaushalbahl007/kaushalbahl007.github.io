@@ -16,8 +16,10 @@ export default defineConfig({
   /* Dev server resolves index.html from src/ */
   root: 'src',
   publicDir: resolve(__dirname, 'public'),
-  /* Relative asset URLs, so the page works at the root or any subpath. */
-  base: './',
+  /* Absolute asset URLs. The site is served from the domain root, and nested
+     routes (/apps/night-atlas) are served the SPA fallback — a relative
+     "./assets/..." would resolve against the route and 404. */
+  base: '/',
   build: {
     outDir: resolve(__dirname, '.'),
     /* The output directory is the repo itself — never wipe it. */

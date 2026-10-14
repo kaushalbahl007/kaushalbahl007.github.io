@@ -93,6 +93,18 @@ const apps = [
     description:'A word puzzle built for the quiet hours — daily challenges, streaks and a growing atlas of levels, all stored on your own device and never sent anywhere.',
     features:['Daily challenge and streaks','No accounts, no analytics, no servers','Optional premium subscription removes adverts'],
   },
+  {
+    /* Ships on both stores. `pkg` is the Play package and doubles as the id
+       shown on the detail page; `appId` is the numeric App Store id. */
+    id:'sudoku-haven', name:'Sudoku Haven', type:'Game', tag:'Number puzzle',
+    store:'both', appId:'', pkg:'com.benzenestudio.niner',
+    email:'myselfkaushal.kumar@gmail.com',
+    mark:'▦', color:'#4285f4', accent:'blue',
+    icon:'/icons/sudoku-haven.png',
+    shots:[],
+    description:'Classic sudoku with hints that teach rather than spoil — pencil notes, daily streaks and nine difficulty levels, all stored on your own device.',
+    features:['Hints that explain the reasoning','Daily challenge and streaks','No forced ads; rewarded video is always optional'],
+  },
 ]
 
 const SUPPORT_EMAIL = 'kaushalbahl007@gmail.com'
@@ -178,21 +190,33 @@ const AppleGlyph = () => (
   </svg>
 )
 
-const StoreButton = ({app}) => {
-  const ios = app.store === 'ios'
-  /* Without a numeric id yet, point at the store's search for the app name
-     rather than a URL that would 404. */
-  const href = ios
+/* Which stores an app is on. `store` may be 'ios', 'play' (the default) or
+   'both'; an app on both gets a badge each. */
+const storesFor = (app) =>
+  app.store === 'both' ? ['ios','play'] : [app.store === 'ios' ? 'ios' : 'play']
+
+/* Without a numeric App Store id yet, point at the store's search for the app
+   name rather than a URL that would 404. */
+const storeUrl = (app, kind) =>
+  kind === 'ios'
     ? (app.appId ? `${APPSTORE}id${app.appId}` : `https://apps.apple.com/search?term=${encodeURIComponent(app.name)}`)
     : playUrl(app)
+
+const StoreButton = ({app, kind}) => {
+  const ios = kind === 'ios'
   return (
-    <a className={`store-button ${ios ? 'apple' : ''}`} href={href} target="_blank" rel="noopener noreferrer"
+    <a className={`store-button ${ios ? 'apple' : ''}`} href={storeUrl(app, kind)}
+       target="_blank" rel="noopener noreferrer"
        aria-label={`Get ${app.name} on the ${ios ? 'App Store' : 'Google Play'}`}>
       {ios ? <AppleGlyph/> : <PlayGlyph/>}
       <span><small>{ios ? 'Download on the' : 'Get it on'}</small><strong>{ios ? 'App Store' : 'Google Play'}</strong></span>
     </a>
   )
 }
+
+/* One badge per store the app ships on. */
+const StoreButtons = ({app}) =>
+  storesFor(app).map(kind => <StoreButton app={app} kind={kind} key={kind}/>)
 
 /* ---------- Theme ---------- */
 function useTheme(){
@@ -357,7 +381,7 @@ function Home(){
               <span className="card-type">{app.type}</span>
               <h3>{app.name}</h3>
               <p>{app.description}</p>
-              <div><StoreButton app={app}/><Link to={`/apps/${app.id}`} className="mini-link">Details ↗</Link></div>
+              <div><StoreButtons app={app}/><Link to={`/apps/${app.id}`} className="mini-link">Details ↗</Link></div>
             </Rise>
           )}
         </div>
@@ -392,14 +416,19 @@ function Home(){
                         <span>{app.tag}</span>
                       </div>
                     </Link>
-                    <a className={`mini-get ${app.store==='ios' ? 'apple' : ''}`}
-                       href={app.store==='ios'
-                         ? (app.appId ? `${APPSTORE}id${app.appId}` : `https://apps.apple.com/search?term=${encodeURIComponent(app.name)}`)
-                         : playUrl(app)}
-                       target="_blank" rel="noopener noreferrer"
-                       aria-label={`Get ${app.name} on the ${app.store==='ios' ? 'App Store' : 'Google Play'}`}>
-                      {app.store==='ios' ? <AppleGlyph/> : <PlayGlyph/>}
-                    </a>
+                    {/* The compact tile shows a single badge: the app's first
+                        store, so a dual-store app doesn't crowd the row. */}
+                    {(() => {
+                      const kind = storesFor(app)[0]
+                      return (
+                        <a className={`mini-get ${kind==='ios' ? 'apple' : ''}`}
+                           href={storeUrl(app, kind)}
+                           target="_blank" rel="noopener noreferrer"
+                           aria-label={`Get ${app.name} on the ${kind==='ios' ? 'App Store' : 'Google Play'}`}>
+                          {kind==='ios' ? <AppleGlyph/> : <PlayGlyph/>}
+                        </a>
+                      )
+                    })()}
                   </Rise>
                 )}
               </div>
@@ -460,7 +489,7 @@ function AppPage(){
           <h1>{app.name}</h1>
           <p>{app.description}</p>
           <div className="hero-row">
-            <StoreButton app={app}/>
+            <StoreButtons app={app}/>
             <span className="pkg">{app.pkg}</span>
           </div>
         </motion.div>

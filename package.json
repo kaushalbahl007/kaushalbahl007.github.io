@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp index.html 404.html && touch .nojekyll",
+    "build": "vite build && node scripts/prune-assets.mjs && cp index.html 404.html && touch .nojekyll",
     "preview": "vite preview"
   },
   "dependencies": {
