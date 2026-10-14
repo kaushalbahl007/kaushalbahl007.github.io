@@ -86,7 +86,6 @@ const apps = [
        appId is the numeric App Store id — fill it in once the listing is live. */
     id:'night-atlas', name:'Night Atlas', type:'Game', tag:'Word puzzle',
     store:'ios', appId:'', pkg:'com.benzenestudios.nightatlas',
-    email:'myselfkaushal.kumar@gmail.com',
     mark:'☾', color:'#7fae98', accent:'green',
     icon:'/icons/night-atlas.png',
     shots:['/shots/night-atlas-1.jpg','/shots/night-atlas-2.jpg','/shots/night-atlas-3.jpg','/shots/night-atlas-4.jpg'],
@@ -98,7 +97,6 @@ const apps = [
        shown on the detail page; `appId` is the numeric App Store id. */
     id:'sudoku-haven', name:'Sudoku Haven', type:'Game', tag:'Number puzzle',
     store:'both', appId:'', pkg:'com.benzenestudio.niner',
-    email:'myselfkaushal.kumar@gmail.com',
     mark:'▦', color:'#4285f4', accent:'blue',
     icon:'/icons/sudoku-haven.png',
     shots:[],
