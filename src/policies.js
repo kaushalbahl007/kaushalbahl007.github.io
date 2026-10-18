@@ -665,4 +665,59 @@ export const policies = {
       ]},
     ],
   },
+  'quietlog': {
+    updated: 'October 18, 2026',
+    sections: [
+      { h: 'Privacy Policy', body: [
+        ['p', 'QuietLog: Decibel & Noise Meter ("we", "our", or "us"), developed by Benzene Studio, is designed to provide high-precision sound pressure level (SPL) measurements, real-time frequency analysis (RTA), apartment sound audits, and legal noise dispute documentation while respecting your fundamental right to privacy. This Privacy Policy explains how information is handled when you use QuietLog.'],
+        ['lab', 'Core Privacy Commitment'],
+        ['p', 'QuietLog processes acoustic and decibel data 100% locally on your device in temporary memory (RAM). We do not record, store, transmit, or sell your audio data to any remote servers.'],
+      ]},
+      { h: '1. Overview', body: [
+        ['p', 'QuietLog is designed to provide high-precision sound pressure level (SPL) measurements, real-time frequency analysis (RTA), apartment sound audits, and legal noise dispute documentation while respecting your fundamental right to privacy. This Privacy Policy explains how information is handled when you use QuietLog.'],
+      ]},
+      { h: '2. Data Collection and Usage', body: [
+        ['lab', 'A. Microphone Access (Audio Data)'],
+        ['li', 'Purpose: QuietLog accesses your device’s microphone strictly to calculate sound pressure levels in decibels (dBA and dBC) and compute octave frequency band distributions (Fast Fourier Transform / FFT).'],
+        ['li', 'On-Device Processing: Audio samples are converted into mathematical decibel readings in volatile memory (RAM) and immediately discarded.'],
+        ['li', 'No Voice or Conversation Recording: We do not record conversations, voice patterns, or ambient background noise to permanent storage unless you explicitly choose to log a short evidence snippet into your local dispute dossier. Even then, the file remains strictly on your local device.'],
+        ['lab', 'B. Camera & Photo Library Access (Optional)'],
+        ['li', 'Purpose: The Acoustic Camera HUD allows you to capture photographic proof with a live decibel overlay, timestamp, and geotag.'],
+        ['li', 'Storage: Captured photos are saved directly to your device’s local Photo Library. QuietLog has no cloud server access to your photos.'],
+        ['lab', 'C. Location Data (Optional)'],
+        ['li', 'Purpose: If granted, location data (GPS coordinates) is used exclusively to stamp the municipal location on exported legal dispute dossiers or camera HUD snapshots.'],
+        ['li', 'No Tracking: We never track, log, or share your movement, location history, or geographic location.'],
+        ['lab', 'D. Local Database Storage'],
+        ['li', 'All your saved noise diary sessions, sleep logs, and pre-lease apartment audits are stored in an encrypted local SQLite database on your device.'],
+        ['li', 'We do not operate backend user accounts. Your data belongs solely to you.'],
+      ]},
+      { h: '3. In-App Purchases and Subscriptions (Apple StoreKit)', body: [
+        ['p', 'QuietLog offers optional auto-renewable subscriptions (QuietLog Pro). All financial transactions and payment processing are handled directly by Apple Inc. through the App Store and StoreKit 2. We do not collect, process, or store your credit card, bank account, or billing details. Apple provides us only with anonymous purchase tokens to unlock your Pro entitlements.'],
+      ]},
+      { h: '4. Advertising (Free Tier Only)', body: [
+        ['p', 'For users on the free tier, QuietLog displays non-intrusive advertisements provided by Google AdMob to support ongoing development:'],
+        ['li', 'AdMob may collect pseudonymous device identifiers (e.g., IDFA, IP address) in compliance with Apple’s App Tracking Transparency (ATT) framework and privacy regulations.'],
+        ['li', 'You can disable personalized advertising in your iOS device settings (Settings > Privacy & Security > Tracking).'],
+        ['li', 'Pro Users: Upgrading to QuietLog Pro permanently removes all advertising SDK calls and network requests related to ads.'],
+      ]},
+      { h: '5. Analytics and Crash Reporting', body: [
+        ['p', 'To improve app stability and fix unexpected bugs, QuietLog may collect anonymous, non-personally identifiable diagnostic data (such as app crash logs and device model information) provided by Apple’s native opt-in App Store analytics.'],
+      ]},
+      { h: '6. Third-Party Sharing', body: [
+        ['p', 'We do not sell, rent, monetize, or trade your personal information, acoustic measurements, or device data to any third parties, data brokers, or advertising networks.'],
+      ]},
+      { h: '7. Children’s Privacy', body: [
+        ['p', 'QuietLog is a general utility application and is not directed towards children under the age of 13. We do not knowingly collect any personal information from children.'],
+      ]},
+      { h: '8. Changes to This Privacy Policy', body: [
+        ['p', 'We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated "Effective Date". Continued use of QuietLog following any changes constitutes acceptance of the revised policy.'],
+      ]},
+      { h: '9. Contact Us', body: [
+        ['p', 'If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us:'],
+        ['li', 'Developer: Benzene Studio'],
+        ['li', 'Email: kaushalbahl007@gmail.com'],
+        ['li', 'Website: https://benzenestudio.com'],
+      ]},
+    ],
+  },
 }

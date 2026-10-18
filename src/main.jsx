@@ -103,6 +103,18 @@ const apps = [
     description:'Classic sudoku with hints that teach rather than spoil — pencil notes, daily streaks and nine difficulty levels, all stored on your own device.',
     features:['Hints that explain the reasoning','Daily challenge and streaks','No forced ads; rewarded video is always optional'],
   },
+  {
+    /* iOS-only. `store:'ios'` switches the badge and the id shown under it;
+       appId is the numeric App Store id — fill it in once the listing is live. */
+    id:'quietlog', name:'QuietLog: Decibel & Noise Meter', type:'Utility', tag:'Decibel & noise meter',
+    store:'ios', appId:'', pkg:'com.benzenestudio.quietlog',
+    email:'kaushalbahl007@gmail.com',
+    mark:'∿', color:'#00e5a3', accent:'green',
+    icon:'/icons/quietlog.png',
+    shots:['/shots/quietlog-1.png','/shots/quietlog-2.png','/shots/quietlog-3.png','/shots/quietlog-4.png','/shots/quietlog-5.png'],
+    description:'High-precision decibel and SPL measurements, real-time frequency analysis (RTA), noise audits, and legal dispute documentation — processed 100% locally on-device.',
+    features:['100% local on-device SPL & FFT analysis','Acoustic Camera HUD & dispute dossiers','Encrypted local database, zero accounts'],
+  },
 ]
 
 const SUPPORT_EMAIL = 'kaushalbahl007@gmail.com'
